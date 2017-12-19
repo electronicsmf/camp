@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nissan | Car Dealership</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css/campStyle.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-custom navbar-fixed-top">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="#page-top"><span id="logo">Nismo</span>/power</a>
+                </div>
+    
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="inventory.html">Inventory</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="about.html">About</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="contact.html">Contact</a>
+                        </li>
+                        <li>
+                            <a href="blog.html">Blog in</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    <!--navigation ends -->    
+    <!--SlideShow Here-->
+    <div class="container slideShowArea">
+        <div class="col-lg-12">
+            <img class="img responsive mySlides" src="images_portfolio9/sentra1.jpg" style="width:100%">
+            <img class="img responsive mySlides" src="images_portfolio9/sentra2.jpg" style="width:100%">
+            <img class="img responsive mySlides" src="images_portfolio9/sentra3.jpg" style="width:100%">
+            <img class="img responsive mySlides" src="images_portfolio9/sentra4.jpg" style="width:100%">
+        </div>    
+    </div>
+    <div class="container Box1">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                 <h3 class="heading-area">Latest New Cars</h3>
+            </div>
+        </div>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="img/page1_img2.jpg" class="img-responsive">
+                    <span>$85,896</span>
+                    <p>LOREM IPSUM DOLOR SIT AMET
+                       Mileage: 0 ml.</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="img/page1_img3.jpg" class="img-responsive">
+                    <span>$85,896</span>
+                    <p>LOREM IPSUM DOLOR SIT AMET
+                        Mileage: 0 ml.</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="img/page1_img2.jpg" class="img-responsive">
+                    <span>$85,896</span>
+                    <p>LOREM IPSUM DOLOR SIT AMET
+                        Mileage: 0 ml.</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="img/page1_img2.jpg" class="img-responsive">
+                    <span>$85,896</span>
+                    <p>LOREM IPSUM DOLOR SIT AMET
+                       Mileage: 0 ml.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container searchArea">
+        <h2>Search Inventory</h2>
+        <hr>
+        <div class="col-lg-12" role="search">
+            <form>
+                <input class="form-control" placeholder="Search" name="srch-inventory" id="srch-inventory" type="text">
+            </form>
+        </div>   
+    </div>
+    <table>
+          <thead><tr>
+              <th class="numeric"><span>ID#</span></th>
+              <th><span>Products</span></th>
+              <th class="numeric"><span>Quantity</span></th>
+              <th class="numeric"><span>Price</span></th>
+              <td class="spacer"></td>
+          </tr></thead>
+          <tbody></tbody>
+    </table>
+
+
+<!-- Bootstrap Core JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+<script src="main.js/carousel.js"></script> 
+<script>
+      var tArr = ["Mens","Womens","Youth","childs"];
+      var sArr = ["XL","M","S","XS"];
+      var kArr = ["pants","shirt","shoes","socks","sweater","belt"];
+
+      function compare(a,b,column,numeric,order){
+           var aValue = a.cells[column].innerHTML;
+           var bValue = b.cells[column].innerHTML;
+           if(numeric){
+               aValue = parseFloat(aValue);
+               bValue = parseFloat(bValue);}
+               if(aValue < bValue) return order;
+               if(aValue > bValue) return -order;
+               return 0;
+      }
+
+      function sortColumn(header, column){
+           var rows = $("tbody tr");
+           rows.sort(function(a,b){
+              return compare(a,b,column, header.data("numeric"),
+                    header.data("order"));
+           });
+        $(rows).each(function(){$("body").append($(this));});   
+           header.data("order", -header.data("order"));
+           $("span").removeClass("ascending descending");
+           $("td").removeClass("sortColumn");
+           if(header.data("order") > 0){
+               header.children("span").addClass("ascending");}
+               else{
+               header.children("span").addClass("descending");}
+               $("tbody tr td:nth-child("+ (column + 1)+ ")").addClass("sortColumn");
+      }
+      
+    function filterColumn(input, column){
+         $("tbody").show().each(function(){
+         var header = $("th:eq("+ column + ")");
+         var filterVal = input.val();
+         var rowVal = this.cells[column].innerHTML;
+         if(header.data("numeric")){
+            if(parseFloat( filterVal) >= parseFloat( rowVal)){
+                 $(this).hide();}}
+            else{
+                if(rowVal.indexOf(filterVal) < 0) {$(this).hide();}}
+        });
+    }
+
+    function ranInt(max){
+        return Math.floor(Math.random()*max + 1);}
+      
+    function builtDat(){
+        for(var x =1; x<26; x++){
+           var row = $("<tr></tr>");
+           row.append($("<td></td>").html(x));
+           row.append($("<td></td>").html(
+               tArr[randInt(3)]+ "" + sArr[ranInt(3)]+
+               "" + KArr[randInt(5)]));
+           row.append($("<td></td>").html(randInt(20)));
+           row.append($("<td></td>").html(
+               ((Math.randow()*80)+5).topFixed(2)));
+           $(tbody).append(row);}
+    }
+    $(document).ready(function(){
+      builtData();
+      $("th").each(function(i){
+          var header =$(this);
+          header.data({numeric:header.hasClass("numeric"), order:-1});
+          header.children("span").click(function(){
+              sortColumn(header,i);});
+              var filter = $('<input type = "text" />');
+              filter.keyup(function(){
+                 filterColumn(filter, i);})
+                 header.append(filter);
+            });
+        });  
+
+
+
+
+
+</script>
+
+</body>
+</html>

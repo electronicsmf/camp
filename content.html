@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Load | content</title>
+    <link rel="stylesheet" src="styles.css/campStyle.css" />
+</head>
+<body>
+     <div id="banner">AngularJs, Javascript and Jquery Articles</div>
+     <br>
+     <div>
+          <div id="leftNav">
+               <span class="navItem" 
+                      article="article1">Responsive Web Design</span>
+               <span class="navItem"
+                      article ="article2">Jquery Under the Hood</span> 
+               <span class="navItem"
+                      article ="article3">AngularJs Your New Best Friend</span>
+               <span class="navItem"
+                      article="article4">Turbo Charged Web Sites</span>
+          </div>
+          <div id="content">
+               <span id="title">&nbsp;</span>
+               <div id="article"></div>
+          </div>
+     </div>  
+    <script>
+        function setArticle(){
+            $('#content').load("data/" + $(this).attr("article")+ ".html");
+        }
+        $(document).ready(function(){
+          $('.navItem').click(setArticle);
+        });
+    </script>
+
+</body>
+</html>
